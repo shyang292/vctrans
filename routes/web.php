@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/transferVC','UserController@transferInterface')->name('transferVC');
+
+Route::post('/transferVC','UserController@transferVC');
