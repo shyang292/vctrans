@@ -22,3 +22,12 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/transferVC','UserController@transferInterface')->name('transferVC');
 
 Route::post('/transferVC','UserController@transferVC');
+
+Route::resource('/transferlog', 'TransactionLogController',['names'=>[
+
+    'index'=>'transferlog.index',
+    'create'=>'transferlog.create',
+    'store'=>'transferlog.store',
+    'edit'=>'transferlog.edit'
+
+]]);

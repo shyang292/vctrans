@@ -115,7 +115,7 @@
                             </li>
 
                             <li>
-                                <a href="">Transfer Logs</a>
+                                <a href="{{route('transferlog.index')}}">Transfer Logs</a>
                             </li>
 
                         </ul>

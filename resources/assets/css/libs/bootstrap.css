@@ -3385,12 +3385,7 @@ input[type="button"].btn-block {
 .fade.in {
   opacity: 1;
 }
-.collapse {
-  display: none;
-}
-.collapse.in {
-  display: block;
-}
+
 tr.collapse.in {
   display: table-row;
 }

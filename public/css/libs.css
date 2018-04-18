@@ -10,6 +10,10 @@ body {
 footer {
     margin: 50px 0;
 }
+
+.nav-second-level{
+    display: block !important;
+}
 /*!
  * Bootstrap v3.3.4 (http://getbootstrap.com)
  * Copyright 2011-2015 Twitter, Inc.
@@ -3397,12 +3401,7 @@ input[type="button"].btn-block {
 .fade.in {
   opacity: 1;
 }
-.collapse {
-  display: none;
-}
-.collapse.in {
-  display: block;
-}
+
 tr.collapse.in {
   display: table-row;
 }

@@ -22,87 +22,52 @@
         {{--</thead>--}}
     {{--</table>--}}
 
-    {!! Form::open(['action' => 'UserController@transferVC', 'method' => 'post']) !!}
-    <div class="form-group">
 
-        {!! Form::label('username', 'Receiver User Name:') !!}
-
-        {!! Form::text('userName', null, ['class'=>'form-control']) !!}
-    </div>
-    <div class="form-group">
-
-        {!! Form::label('number', 'Virtual Currency Number:') !!}
-
-        {!! Form::text('number', null, ['class'=>'form-control']) !!}
-    </div>
-
-
-    <div class="form-group">
-
-        {!! Form::submit('add a new transfer', ['class'=>'btn btn-primary']) !!}
-
-    </div>
-
-    {!! Form::close() !!}
 
     <div class="row">
 
         @include('includes.form_error')
 
-
     </div>
 
+    {!! Form::open(['action' => 'UserController@transferVC', 'method' => 'post']) !!}
+    <div class="form-group">
 
-    <table class="table">
-        <thead>
-        <tr>
-            <th></th>
-            <th>sender</th>
-            <th>receiver</th>
-            <th>number</th>
-            <th>action</th>
-        </tr>
-        </thead>
-        <tbody>
-            @if($user)
-                @for($i =0;$i<$receiverNumber;$i++)
-                <tr>
-                    <td>
-                        {{$i+1}}
-                    </td>
-                    <td>
-                        {{$user->name}}
-                    </td>
-                    <td>
+    {{--{!! Form::label('username', 'Receiver User Name:') !!}--}}
 
-                    </td>
-                    <td></td>
+    {{--{!! Form::text('userName', null, ['class'=>'form-control']) !!}--}}
+    {{--</div>--}}
+    {{--<div class="form-group">--}}
 
-                </tr>
-                @endfor
-            @endif
-        {{--@if($users)--}}
+    {{--{!! Form::label('number', 'Virtual Currency Number:') !!}--}}
+
+    {{--{!! Form::text('number', null, ['class'=>'form-control']) !!}--}}
+    {{--</div>--}}
 
 
-            {{--@foreach($users as $user)--}}
-
-                {{--<tr>--}}
-                    {{--<td>{{$user->id}}</td>--}}
-                    {{--<td> <img height="50" src="{{$user->photo ? $user->photo->file : 'http://placehold.it/400x400'}}" alt="" ></td>--}}
-                    {{--<td><a href="{{route('admin.users.edit', $user->id)}}">{{$user->name}}</a></td>--}}
-                    {{--<td>{{$user->email}}</td>--}}
-                {{--</tr>--}}
-
-            {{--@endforeach--}}
+        <div class="form-group">
+            <input type="hidden" id="sender" name="sender" value="{{$user->name}}">
+            <input type="button" id="addNewTransfer" name="newTransfer" value="add a new transfer" class="btn btn-primary">
+            {!! Form::submit('submit', ['class'=>'btn btn-primary']) !!}
+        </div>
 
 
-        {{--@endif--}}
+        <table class="table" id="transferTable">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>sender</th>
+                <th>receiver</th>
+                <th>number</th>
+                <th>action</th>
+            </tr>
+            </thead>
+            <tbody>
 
+            </tbody>
+        </table>
 
-        </tbody>
-    </table>
-
-
+    {!! Form::close() !!}
 
 
 
