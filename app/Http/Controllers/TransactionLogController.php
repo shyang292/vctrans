@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\TransactionLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -42,6 +43,35 @@ class TransactionLogController extends Controller
      */
     public function store(Request $request)
     {
+//        dd($request->receiver[0]);
+        $sender = json_decode($request->sender);
+
+        //sender, receiver[], number[]
+        //check sender vc number to see whether he has enough vc to send
+        $totalSendingNumber = 0;
+        foreach ($request->number as $num){
+            $totalSendingNumber += $num;
+        }
+
+        if($sender->virtual_currency >= $totalSendingNumber){
+            $input = array();
+            $input['sender'] = $sender->name;
+            $len = count($request->receiver);
+            for($i=0;$i<$len;$i++){
+                $input['receiver'] = $request->receiver[$i];
+                $input['number'] = $request->number[$i];
+                TransactionLog::create($input);
+                //decrease sender vc number
+                DB::table('users')->where('name', '=', $input['sender'])->decrement('virtual_currency', $input['number']);
+                //increase receiver vc number
+                DB::table('users')->where('name', '=', $input['receiver'])->increment('virtual_currency', $input['number']);
+            }
+            return redirect('/home');
+        }else{
+
+
+        }
+
         //
     }
 

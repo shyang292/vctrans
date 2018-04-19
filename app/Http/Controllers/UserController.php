@@ -17,6 +17,8 @@ class UserController extends Controller
     public function index()
     {
         //
+        $user = Auth::user();
+        return view('backend.index', compact('user'));
     }
 
     /**
@@ -72,6 +74,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         //
+        dd($request);
     }
 
     /**
@@ -99,12 +102,18 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function transferVC(Request $request){
-        $receiverName = $request->userName;
-        $number = $request->number;
-        $users = DB::table('users')->where('name', '=', $receiverName)->get();
-        $sender = Auth::user();
-        $this->transferOneTime($sender->name, $receiverName, $number);
-        return 1;
+        //dd($request->receiver);
+        $len = count($request->receiver);
+        for ($i=0;$i<$len; $i++){
+
+
+        }
+//        $receiverName = $request->userName;
+//        $number = $request->number;
+//        $users = DB::table('users')->where('name', '=', $receiverName)->get();
+//        $sender = Auth::user();
+//        $this->transferOneTime($sender->name, $receiverName, $number);
+//        return 1;
     }
 
     private function transferOneTime($sender, $receiver, $number){

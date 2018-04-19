@@ -18,8 +18,8 @@ $(function() {
             // cell2.innerHTML($("#sender").val());
             cell1.innerHTML= table.rows.length-1;
             cell2.innerHTML= $("#sender").val();
-            cell3.innerHTML= "<input type=\"text\" name=\"receiver\" value=\"\">";
-            cell4.innerHTML= "<input type=\"text\" name=\"number\" value=\"\">";
+            cell3.innerHTML= "<input type=\"text\" name=\"receiver[]\" value=\"\">";
+            cell4.innerHTML= "<input type=\"text\" name=\"number[]\" value=\"\">";
             cell5.innerHTML= "";
         }
     });

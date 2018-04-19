@@ -30,23 +30,12 @@
 
     </div>
 
-    {!! Form::open(['action' => 'UserController@transferVC', 'method' => 'post']) !!}
+    {!! Form::open(['action' => 'TransactionLogController@store', 'method' => 'post']) !!}
     <div class="form-group">
 
-    {{--{!! Form::label('username', 'Receiver User Name:') !!}--}}
-
-    {{--{!! Form::text('userName', null, ['class'=>'form-control']) !!}--}}
-    {{--</div>--}}
-    {{--<div class="form-group">--}}
-
-    {{--{!! Form::label('number', 'Virtual Currency Number:') !!}--}}
-
-    {{--{!! Form::text('number', null, ['class'=>'form-control']) !!}--}}
-    {{--</div>--}}
-
-
         <div class="form-group">
-            <input type="hidden" id="sender" name="sender" value="{{$user->name}}">
+            <input type="hidden" name="sender" value="{{$user}}">
+            <input type="hidden" id="sender" name="senderName" value="{{$user->name}}">
             <input type="button" id="addNewTransfer" name="newTransfer" value="add a new transfer" class="btn btn-primary">
             {!! Form::submit('submit', ['class'=>'btn btn-primary']) !!}
         </div>
