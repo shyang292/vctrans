@@ -6,6 +6,7 @@ use App\TransactionLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
 
 class TransactionLogController extends Controller
 {
@@ -43,7 +44,14 @@ class TransactionLogController extends Controller
      */
     public function store(Request $request)
     {
-//        dd($request->receiver[0]);
+        //validation
+        $data = $request->validate([
+            "receiver" => "required|array|min:1",
+            "receiver.*" => "required|string|distinct",
+            "number"   => "required|array|min:1",
+            "number.*"   => "required|integer",
+        ]);
+
         $sender = json_decode($request->sender);
 
         //sender, receiver[], number[]
