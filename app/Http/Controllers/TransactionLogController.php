@@ -6,6 +6,7 @@ use App\TransactionLog;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
 
 class TransactionLogController extends Controller
@@ -76,7 +77,9 @@ class TransactionLogController extends Controller
             }
             return redirect('/home');
         }else{
+            Session::flash('failed_transfer','you don\'t have enough VC');
 
+            return redirect('/transferVC');
 
         }
 

@@ -10,7 +10,12 @@
 
 
     <h1>Virtual Currency Transfer</h1>
+    @if(Session::has('failed_transfer'))
 
+        <p class="bg-danger">{{session('failed_transfer')}}</p>
+
+
+    @endif
     {{--<table class="table">--}}
         {{--<thead>--}}
             {{--<tr>--}}

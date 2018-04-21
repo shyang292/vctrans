@@ -116,34 +116,26 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function transferVC(Request $request){
-        //dd($request->receiver);
-        $len = count($request->receiver);
-        for ($i=0;$i<$len; $i++){
+//    public function transferVC(Request $request){
+//        //dd($request->receiver);
+//        $len = count($request->receiver);
+//        for ($i=0;$i<$len; $i++){
+//        }
+//    }
 
-
-        }
-//        $receiverName = $request->userName;
-//        $number = $request->number;
-//        $users = DB::table('users')->where('name', '=', $receiverName)->get();
-//        $sender = Auth::user();
-//        $this->transferOneTime($sender->name, $receiverName, $number);
-//        return 1;
-    }
-
-    private function transferOneTime($sender, $receiver, $number){
-        //save to transaction log table
-        DB::table('transaction_logs')->insert(
-            ['from' => $sender,
-                'to' => $receiver,
-                'number'=> $number,
-                'created_at' => Carbon::now()
-            ]
-        );
-        //decrease sender vc number
-        DB::table('users')->where('name', '=', $sender)->decrement('virtual_currency', $number);
-        //increase receiver vc number
-        DB::table('users')->where('name', '=', $receiver)->increment('virtual_currency', $number);
-
-    }
+//    private function transferOneTime($sender, $receiver, $number){
+//        //save to transaction log table
+//        DB::table('transaction_logs')->insert(
+//            ['from' => $sender,
+//                'to' => $receiver,
+//                'number'=> $number,
+//                'created_at' => Carbon::now()
+//            ]
+//        );
+//        //decrease sender vc number
+//        DB::table('users')->where('name', '=', $sender)->decrement('virtual_currency', $number);
+//        //increase receiver vc number
+//        DB::table('users')->where('name', '=', $receiver)->increment('virtual_currency', $number);
+//
+//    }
 }

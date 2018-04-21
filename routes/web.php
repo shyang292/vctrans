@@ -17,17 +17,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'UserController@index')->name('home');
 
-Route::get('/transferVC','UserController@transferInterface')->name('transferVC');
+Route::group(['middleware'=>'admin'], function(){
+    Route::get('/home', 'UserController@index')->name('home');
 
-Route::post('/transferVC','UserController@transferVC');
+    Route::get('/transferVC','UserController@transferInterface')->name('transferVC');
 
-Route::resource('/transferlog', 'TransactionLogController',['names'=>[
+//    Route::post('/transferVC','UserController@transferVC');
 
-    'index'=>'transferlog.index',
-    'create'=>'transferlog.create',
-    'store'=>'transferlog.store',
-    'edit'=>'transferlog.edit'
+    Route::resource('/transferlog', 'TransactionLogController',['names'=>[
 
-]]);
+        'index'=>'transferlog.index',
+        'create'=>'transferlog.create',
+        'store'=>'transferlog.store',
+        'edit'=>'transferlog.edit'
+
+    ]]);
+
+});
