@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Notification;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Carbon\Carbon;
@@ -18,7 +21,19 @@ class UserController extends Controller
     {
         //
         $user = Auth::user();
-        return view('backend.index', compact('user'));
+        $notifications = $user->notifications;
+        $resArr = array();
+        foreach ($notifications as $notification){
+            if($notification->viewed == 0){
+                array_push($resArr, $notification);
+//                $notification->viewed = 1;
+//                Notification::findOrFail($notification->id)->update($notification);
+                DB::table('notifications')
+                    ->where('id', $notification->id)
+                    ->update(['viewed' => 1]);
+            }
+        }
+        return view('backend.index', compact('user', 'resArr'));
     }
 
     /**
