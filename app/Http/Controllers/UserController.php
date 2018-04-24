@@ -106,9 +106,9 @@ class UserController extends Controller
     public function transferInterface(){
 
         $user = Auth::user();
-        $receiverNumber = 10;
+//        $receiverNumber = 10;
 
-        return view('backend.transInterface', compact('user', 'receiverNumber'));
+        return view('backend.transInterface', compact('user'));
     }
 
     /**
