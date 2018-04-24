@@ -15,10 +15,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/logout', '\App\Http\Controllers\Auth\LoginController@logout');
+
+
 Auth::routes();
 
 
-Route::group(['middleware'=> ['admin', 'https']], function(){
+Route::group(['middleware'=> ['admin', 'laravelForceHttps']], function(){
     Route::get('/home', 'UserController@index')->name('home');
 
     Route::get('/transferVC','UserController@transferInterface')->name('transferVC');

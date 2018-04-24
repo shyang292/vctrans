@@ -59,5 +59,6 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'admin' => \App\Http\Middleware\Admin::class,
         'https' =>  \App\Http\Middleware\HttpsProtocol::class,
+        'laravelForceHttps' => \Angecode\LaravelForceHttps\Middleware\LaravelForceHttpsMiddlewareRedirect::class,
     ];
 }

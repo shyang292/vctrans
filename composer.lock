@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "1f397cbe763ef8ee08bbc25f65a746d4",
+    "content-hash": "f82b8beb42043e8c1c350148ef6ce882",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2291,6 +2291,59 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
+        },
+        {
+            "name": "yaroslawww/laravel-force-https",
+            "version": "1.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yaroslawww/laravel-force-https.git",
+                "reference": "74fcfa9bb750a2cdd06f05bebfc5ff5bbeabfad7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yaroslawww/laravel-force-https/zipball/74fcfa9bb750a2cdd06f05bebfc5ff5bbeabfad7",
+                "reference": "74fcfa9bb750a2cdd06f05bebfc5ff5bbeabfad7",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/framework": "~5.2",
+                "php": ">=5.6.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Angecode\\LaravelForceHttps\\LaravelForceHttpsServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "classmap": [],
+                "psr-0": {
+                    "Angecode\\LaravelForceHttps": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Yaroslav Georgitsa",
+                    "email": "yaroslav.georgitsa@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Easy redirect to https for Laravel",
+            "homepage": "https://github.com/yaroslawww/laravel-force-https",
+            "keywords": [
+                "https",
+                "laravel",
+                "php",
+                "ssl"
+            ],
+            "time": "2018-02-18T18:00:06+00:00"
         }
     ],
     "packages-dev": [
