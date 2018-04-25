@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Notification;
+use App\User;
+use Illuminate\Support\Facades\DB;
 
 class NotificationController extends Controller
 {
@@ -44,7 +47,20 @@ class NotificationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sender = json_decode($request->sender);
+        $input = array();
+        $len = count($request->receiver);
+        for($i=0;$i<$len;$i++){
+            $results = DB::table('users')
+                ->where('name', '=', $request->receiver[$i])
+                ->get();
+            $input['user_id'] = $results[0]->id;
+            $input['message'] = $sender->name . ' send ' . $request->receiver[$i] .
+                ' ' .$request->number[$i] . ' vc';
+            $input['viewed'] = 0;
+            Notification::create($input);
+        }
+        return redirect('/home');
     }
 
     /**

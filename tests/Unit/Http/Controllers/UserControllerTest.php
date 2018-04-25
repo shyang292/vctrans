@@ -49,6 +49,7 @@ class CityControllerTest extends TestCase
 
         $this->assertEquals('backend.transInterface', $view->getName());
         $this->assertArrayHasKey('user', $view->getData());
+        $this->assertArrayHasKey('resArr', $view->getData());
     }
 
 

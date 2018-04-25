@@ -24,7 +24,21 @@ class TransactionLogController extends Controller
             ->where('sender', '=', $user->name)
             ->orWhere('receiver', '=', $user->name)
             ->get();
-        return view('backend.transferlog', compact('results'));
+        //get notification
+        $user = Auth::user();
+        $notifications = $user->notifications;
+        $resArr = array();
+        foreach ($notifications as $notification){
+            if($notification->viewed == 0){
+                array_push($resArr, $notification);
+//                $notification->viewed = 1;
+//                Notification::findOrFail($notification->id)->update($notification);
+                DB::table('notifications')
+                    ->where('id', $notification->id)
+                    ->update(['viewed' => 1]);
+            }
+        }
+        return view('backend.transferlog', compact('results', 'resArr'));
     }
 
     /**
@@ -75,6 +89,8 @@ class TransactionLogController extends Controller
                 //increase receiver vc number
                 DB::table('users')->where('name', '=', $input['receiver'])->increment('virtual_currency', $input['number']);
             }
+//            return redirect('/home');
+            app('App\Http\Controllers\NotificationController')->store($request);
             return redirect('/home');
         }else{
             Session::flash('failed_transfer','you don\'t have enough VC');

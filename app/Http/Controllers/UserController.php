@@ -106,9 +106,19 @@ class UserController extends Controller
     public function transferInterface(){
 
         $user = Auth::user();
-//        $receiverNumber = 10;
-
-        return view('backend.transInterface', compact('user'));
+        $notifications = $user->notifications;
+        $resArr = array();
+        foreach ($notifications as $notification){
+            if($notification->viewed == 0){
+                array_push($resArr, $notification);
+//                $notification->viewed = 1;
+//                Notification::findOrFail($notification->id)->update($notification);
+                DB::table('notifications')
+                    ->where('id', $notification->id)
+                    ->update(['viewed' => 1]);
+            }
+        }
+        return view('backend.transInterface', compact('user', 'resArr'));
     }
 
     /**

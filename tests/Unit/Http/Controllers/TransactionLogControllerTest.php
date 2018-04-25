@@ -38,6 +38,7 @@ class TransactionLogControllerTest extends TestCase
 
         $this->assertEquals('backend.transferlog', $view->getName());
         $this->assertArrayHasKey('results', $view->getData());
+        $this->assertArrayHasKey('resArr', $view->getData());
     }
 
 

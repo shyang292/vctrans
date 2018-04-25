@@ -37,4 +37,9 @@ Route::group(['middleware'=> ['admin', 'laravelForceHttps']], function(){
 
     ]]);
 
+    Route::resource('/notification', 'NotificationController',['names'=>[
+        'store'=>'notification.store'
+
+    ]]);
+
 });
